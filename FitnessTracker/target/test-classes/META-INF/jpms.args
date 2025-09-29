@@ -1,0 +1,4 @@
+--patch-module
+sismanis.fitnesstracker=_
+--add-reads
+sismanis.fitnesstracker=ALL-UNNAMED

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox spacing="15.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sismanis.fitnesstracker.GoalsViewController">
+    <padding>
+        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+    </padding>
+    <children>
+        <Label text="Στόχοι Προπονήσεων:">
+            <font>
+                <Font name="System Bold" size="16.0" />
+            </font>
+        </Label>
+        <GridPane hgap="10.0" vgap="8.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="130.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="130.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
+            </columnConstraints>
+            <children>
+                <Label text="Περιγραφή Στόχου:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                <TextField fx:id="goalDescriptionField" promptText="π.χ. Τρέξιμο 100km το μήνα" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="0" />
+
+                <Label text="Τύπος Στόχου:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                <ComboBox fx:id="goalTypeComboBox" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                <Label text="Τιμή Στόχου:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                <TextField fx:id="goalTargetValueField" promptText="π.χ. 100 (km)" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+
+                <Label text="Ημ/νία Έναρξης:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                <DatePicker fx:id="goalStartDatePicker" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                <Label text="Ημ/νία Λήξης (προαιρ.):" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                <DatePicker fx:id="goalEndDatePicker" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+
+                <Label text="Σημειώσεις Στόχου:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                <TextArea fx:id="goalNotesArea" prefHeight="70.0" wrapText="true" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="3" />
+            </children>
+        </GridPane>
+        <HBox alignment="CENTER_LEFT" spacing="10.0">
+            <children>
+                <Button fx:id="addGoalButton" mnemonicParsing="false" onAction="#handleAddGoal" style="-fx-font-size: 13px;" text="Προσθήκη / Αποθήκευση Στόχου" />
+                <Button fx:id="editGoalButton" mnemonicParsing="false" onAction="#handleEditGoal" style="-fx-font-size: 13px;" text="Επεξεργασία Στόχου" />
+                <Button fx:id="deleteGoalButton" mnemonicParsing="false" onAction="#handleDeleteGoal" style="-fx-font-size: 13px;" text="Διαγραφή Στόχου" />
+            </children>
+            <VBox.margin>
+                <Insets top="5.0" />
+            </VBox.margin>
+        </HBox>
+        <TableView fx:id="goalsTable" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="goalDescriptionCol" prefWidth="200.0" text="Περιγραφή" />
+                <TableColumn fx:id="goalTypeCol" prefWidth="150.0" text="Τύπος" />
+                <TableColumn fx:id="goalTargetCol" prefWidth="80.0" text="Στόχος" />
+                <TableColumn fx:id="goalCurrentCol" prefWidth="80.0" text="Τρέχον" />
+                <TableColumn fx:id="goalProgressCol" prefWidth="150.0" text="Πρόοδος" />
+                <TableColumn fx:id="goalStartDateCol" prefWidth="100.0" text="Έναρξη" />
+                <TableColumn fx:id="goalEndDateCol" prefWidth="100.0" text="Λήξη" />
+                <TableColumn fx:id="goalCompletedCol" prefWidth="75.0" text="Ολοκλ." />
+                <TableColumn fx:id="goalNotesCol" minWidth="100.0" prefWidth="150.0" text="Σημειώσεις" />
+            </columns>
+            <columnResizePolicy>
+                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+            </columnResizePolicy>
+        </TableView>
+    </children>
+</VBox>
